@@ -1,0 +1,9 @@
+Package: AIME
+Title: Autoencoder-based Integrative Multi-omics data Embedding
+Version: 1.0
+Date: 2021-01-24
+Author: Tianwei Yu <yutianwei@cuhk.edu.cn>
+Maintainer: Tianwei Yu <yutianwei@cuhk.edu.cn>
+Description: A nonlinear data embedding method using modified autoencoder which can account for confounder effects.
+Depends: R (>= 4.0.0), keras, tensorflow, tidyverse, ggplot2, MVN, mvtnorm, e1071, grDevices, graphics, methods, stats
+License: GPL-3

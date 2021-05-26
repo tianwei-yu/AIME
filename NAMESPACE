@@ -1,0 +1,6 @@
+export("aime", "aime.select")
+import("keras", "tensorflow", "tidyverse", "ggplot2","MVN","mvtnorm","e1071")
+importFrom("grDevices", "dev.off", "pdf")
+importFrom("graphics", "pairs")
+importFrom("methods", "new")
+importFrom("stats", "as.dist", "cor", "predict", "sd")
