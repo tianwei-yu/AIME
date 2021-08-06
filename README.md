@@ -43,7 +43,7 @@ g<-aime.select(data.in=X[,-1:-5], data.out=Y, confounder=X[,1:10],all.in.layers=
 
 ```
 
-Here is the example output from the code. Smaller ranks in skewness and kurtosis indicate non-Gaussian distributions which AIME seeks. The last column is the average absolute correlation between the embeded dimensions. Smaller is better. In addition, a PDF file is written to the working directory, which contains the pairwise scatterplots. The user can visually examine the plots to select the hyperparameter settings. 
+Here is the example output from the code. Smaller ranks in skewness and kurtosis indicate non-Gaussian distributions which AIME seeks. The last column is the average absolute correlation between the embeded dimensions. Smaller is better. 
 
 ```{r example}
 > g
@@ -53,3 +53,5 @@ Here is the example output from the code. Smaller ranks in skewness and kurtosis
 8         4          4     0.5                            1.00                           1.000 0.7493096
 
 ```
+
+In addition, a PDF file is written to the working directory, which contains the pairwise scatterplots. The user can visually examine the plots to select the hyperparameter settings. R binary files of the results in each parameter setting are also written in the folder. 
