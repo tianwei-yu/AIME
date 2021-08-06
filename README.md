@@ -3,7 +3,7 @@ AIME Autoencoder-based Integrative Multi-omics data Embedding
 
 AIME extracts data representation for omics data integrative analysis. The method can adjust for confounder variables, achieve informative data embedding, rank features in terms of their contributions, and find pairs of features from the two data types that are related to each other through the data embedding. 
 
-A github install by using devtools:install_github(AIME) will automatically invoke the installation of the keras package for R. However the first time you run AIME, and error may pop up, asking you to install tensorflow. Simply follow the command in the error message to install tensorflow. The AIME can be run in CPU mode. Running in GPU mode requires the installation of GPU version of tensorflow. 
+A github install by using devtools::install_github("tianwei-yu/AIME") will automatically invoke the installation of the keras package for R. However the first time you run AIME, and error may pop up, asking you to install tensorflow. Simply follow the command in the error message to install tensorflow. AIME can be run in CPU mode. Running in GPU mode requires the installation of GPU version of tensorflow. 
 
 The method takes two matrices as inputs: the input matrix X_(N×p), and the output matrix Y_(Nxq). It also takes a confounder matrix (could be NULL if not necessary)  C_(N×s).
 With regard to the sizes of the layers of the network, the method allows three different ways for the user to specify. (1) The user can directly specify the sizes of all the individual layers; (2) the user can input a shrinkage factor, such that the size of each layer in the encoder is the product of the size of the previous layer and the shrinkage factor, and the size of each decoder layer is the product of the next layer and the shrinkage factor; (3) the user can input the desired number of input/out layers, and the shrinkage factor is calculated based on the number of layers. 
@@ -33,8 +33,16 @@ pairs(b$embeded)
 
 ```
 
+We include a utility to select some key parameters. At each hyperparameter setting, the data embedding (matrix E) is computed, and the average absolute pairwise correlation between the columns of the E matrix is calculated. Among the settings for which the average correlation is below a threshold, the Mardia’s multivariate skewness and kurtosis coefficients are calculated for the embedded data. We rank each setting by the skewness and kurtosis of the embedded data, and then select the setting the yield the highest average rank of skewness and kurtosis. This process selects parameter settings that yield embedding that is not highly correlated, as well as with a distribution far from multivariate normal. 
+
+Here is a small example:
+
+```{r example}
 
 g<-aime.select(data.in=X[,-1:-5], data.out=Y, confounder=X[,1:10],all.in.layers=3:4, all.out.layers=3:4, all.dropouts=c(0.25, 0.5), repeats=2)
+
+```
+
 
 
 
